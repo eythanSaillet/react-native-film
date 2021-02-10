@@ -1,15 +1,20 @@
 import { getStatusBarHeight } from 'react-native-status-bar-height'
-import React from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, View, TextInput, Image } from 'react-native'
 
-export const SearchBar = ({ handleInputChange }) => {
+export const SearchBar = ({ setQuery }) => {
+	const [input, setInput] = useState('')
+
 	return (
 		<View style={styles.container}>
 			<View style={styles.searchBar}>
 				<TextInput
 					style={styles.input}
 					onChangeText={(text) => {
-						handleInputChange(text)
+						setInput(text)
+					}}
+					onBlur={() => {
+						setQuery(input)
 					}}
 				/>
 				<View pointerEvents="none" style={styles.searchIconContainer}>

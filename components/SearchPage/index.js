@@ -5,12 +5,12 @@ import { MovieList } from './MovieList'
 import { SearchBar } from './SearchBar'
 
 export const SearchPage = () => {
-	const [input, setInput] = useState('')
+	const [query, setQuery] = useState('')
 
 	return (
 		<>
-			<SearchBar handleInputChange={setInput}></SearchBar>
-			<MovieList searchFilter={input} />
+			<SearchBar setQuery={setQuery}></SearchBar>
+			<MovieList query={query} />
 		</>
 	)
 }

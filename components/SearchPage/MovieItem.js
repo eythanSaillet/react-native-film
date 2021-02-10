@@ -1,16 +1,16 @@
 import React from 'react'
 import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native'
 
-export const MovieItem = (props) => {
+export const MovieItem = ({ title, date, imageSource }) => {
 	return (
 		<TouchableOpacity activeOpacity={0.5}>
 			<View style={styles.container}>
 				<View style={styles.thumbnailContainer}>
-					<Image style={{ width: 40, height: 63 }} source={props.imageSource} />
+					<Image style={{ width: 40, height: 63 }} source={{ uri: imageSource }} />
 				</View>
 				<View style={styles.infosContainer}>
-					<Text style={styles.title}>{props.title}</Text>
-					<Text>{props.date}</Text>
+					<Text style={styles.title}>{title}</Text>
+					<Text>{date}</Text>
 				</View>
 			</View>
 		</TouchableOpacity>

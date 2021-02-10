@@ -1,19 +1,34 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { StyleSheet, View, ScrollView, FlatList, SafeAreaView, Text } from 'react-native'
 
 import { MovieItem } from './MovieItem'
 import { movieListConfig } from '../../assets/movieListConfig'
 
-export const MovieList = ({ searchFilter }) => {
+export const MovieList = ({ query }) => {
+	const [data, setData] = useState([])
+
 	let renderItem = ({ item }) => {
-		if (item.title.toLowerCase().includes(searchFilter.toLowerCase())) {
-			return <MovieItem title={item.title} date={item.date} imageSource={item.url} />
-		}
+		return <MovieItem title={item.original_title} date={item.release_date} imageSource={`https://image.tmdb.org/t/p/original/${item.poster_path}`} />
 	}
+
+	let fetchData = () => {
+		fetch(`https://api.themoviedb.org/3/search/movie?api_key=62f071d2521aba16cf7952ef57fd6e77&query=${query}`)
+			.then((response) => response.json())
+			.then((data) => {
+				setData(data.results)
+			})
+	}
+
+	useEffect(() => {
+		if (query !== '') {
+			fetchData()
+		}
+	}, [query])
+
 	return (
 		<View style={styles.view}>
 			<SafeAreaView style={styles.fullFlex}>
-				<FlatList data={movieListConfig} extraData={searchFilter} renderItem={renderItem} keyExtractor={(item) => item.id.toString()} />
+				<FlatList data={data} renderItem={renderItem} keyExtractor={(item) => item.id.toString()} />
 			</SafeAreaView>
 		</View>
 	)
