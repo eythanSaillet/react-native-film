@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { StyleSheet, View, ScrollView, FlatList, SafeAreaView, Text } from 'react-native'
+import { StyleSheet, View, FlatList, SafeAreaView } from 'react-native'
 
 import { MovieItem } from './MovieItem'
-import { movieListConfig } from '../../assets/movieListConfig'
 
 export const MovieList = ({ query }) => {
 	const [data, setData] = useState([])
