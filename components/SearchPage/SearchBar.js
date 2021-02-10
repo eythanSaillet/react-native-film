@@ -13,7 +13,7 @@ export const SearchBar = ({ handleInputChange }) => {
 					}}
 				/>
 				<View pointerEvents="none" style={styles.searchIconContainer}>
-					<Image style={styles.searchIcon} source={require('../assets/loupe.png')}></Image>
+					<Image style={styles.searchIcon} source={require('../../assets/loupe.png')}></Image>
 				</View>
 			</View>
 		</View>

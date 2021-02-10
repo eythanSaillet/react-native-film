@@ -1,15 +1,11 @@
-import React, { useState } from 'react'
-import { StyleSheet } from 'react-native'
+import React from 'react'
 
-import { SearchBar } from './components/SearchBar'
-import { MovieList } from './components/MovieList'
+import { SearchPage } from './components/SearchPage/index'
 
 export default function App() {
-	const [input, setInput] = useState('')
 	return (
 		<>
-			<SearchBar handleInputChange={setInput}></SearchBar>
-			<MovieList searchFilter={input} />
+			<SearchPage />
 		</>
 	)
 }
