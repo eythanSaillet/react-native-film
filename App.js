@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
 import { SearchPage } from './components/SearchPage/index'
+import { GenresPage } from './components/GenresPage/index'
 
 const Tab = createBottomTabNavigator()
 
@@ -13,12 +14,12 @@ export default function App() {
 			<NavigationContainer>
 				<Tab.Navigator
 					screenOptions={({ route }) => ({
-						tabBarIcon: ({ focused, color, size }) => {
+						tabBarIcon: ({ focused, color }) => {
 							let iconName
 
 							if (route.name === 'Search') {
 								iconName = focused ? 'search-circle' : 'search-circle-outline'
-							} else if (route.name === 'Categories') {
+							} else if (route.name === 'Genres') {
 								iconName = focused ? 'file-tray-full' : 'file-tray-full-outline'
 							}
 
@@ -36,7 +37,7 @@ export default function App() {
 					}}
 				>
 					<Tab.Screen name="Search" component={SearchPage} />
-					<Tab.Screen name="Categories" component={SearchPage} />
+					<Tab.Screen name="Genres" component={GenresPage} />
 				</Tab.Navigator>
 			</NavigationContainer>
 		</>
