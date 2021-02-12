@@ -22,8 +22,6 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		alignItems: 'center',
 		height: 100,
-		// borderBottomWidth: 0.5,
-		// borderColor: 'grey',
 	},
 	thumbnailContainer: {
 		alignItems: 'center',

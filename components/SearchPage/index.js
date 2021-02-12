@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { StyleSheet } from 'react-native'
 
-import { MovieList } from './MovieList'
+import { MovieList } from '../utils/MovieList/index'
 import { SearchBar } from './SearchBar'
 
 export const SearchPage = () => {

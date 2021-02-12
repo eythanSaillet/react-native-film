@@ -3,7 +3,7 @@ import { StyleSheet, View, FlatList, SafeAreaView } from 'react-native'
 
 import { MovieItem } from './MovieItem'
 
-export const MovieList = ({ query }) => {
+export const MovieList = ({ query, route }) => {
 	const [data, setData] = useState([])
 
 	let renderItem = ({ item }) => {
@@ -11,7 +11,13 @@ export const MovieList = ({ query }) => {
 	}
 
 	let fetchData = () => {
-		fetch(`https://api.themoviedb.org/3/search/movie?api_key=62f071d2521aba16cf7952ef57fd6e77&query=${query}`)
+		// Search movies with a query
+		let url = `https://api.themoviedb.org/3/search/movie?api_key=62f071d2521aba16cf7952ef57fd6e77&query=${query}`
+		// Search movies with a genre id
+		if (route) {
+			url = `https://api.themoviedb.org/3/discover/movie?api_key=62f071d2521aba16cf7952ef57fd6e77&with_genres=${route.params.genreId}`
+		}
+		fetch(url)
 			.then((response) => response.json())
 			.then((data) => {
 				setData(data.results)
